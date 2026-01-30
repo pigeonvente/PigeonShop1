@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <!--Indique l'encodage des caractères (pour tapper des accents par exemple) ChaGPT me dit que c'est important-->
+    <title>PigeonShop</title>
+    <!--titre de l'onglet-->
+  </head>
+  <body>
+    <div class="menu">
+      <a href="notrehistoire.html" id="logo" class="nobbo">    <!--défini le bouton du logo avec une classe par défaut--> 
+        <img src="pigeonlogo.png" alt="Pigeon">     <!--src=image à charger, alt=texte en cas d'erreur--> 
+      </a>
+      <a href="pigeonsite.html" class="menubtn menubtn1">Menu</a>
+      <a href="notrehistoire.html" class="menubtn">Notre histoire</a>
+    </div>
+    <div id="adec" class="nobbo">
+        <img src="adec.png" alt="[image]"> 
+            <button id="dec" class="cliquable nobbo">
+                <img src="dec.png" alt="découvrir">
+            </button>
+    </div>
+
+      <div class="grille">
+        <div id="pigeonvente1" class="nobbo pres">       <!-- 'nobbo' : abréaviation pour no border/backround/outline-->
+          <img src="pigeonvente1.png" alt="pigeon1">
+          <a href="pigeon1.html">
+            <img src="dec.png" alt="Ajouter au panier" class="panier">
+          </a>
+        </div>
+        <div id="pigeonvente2" class="nobbo pres"> 
+          <img src="pigeonvente2.png" alt="pigeon2">
+          <a href="pigeon2.html">
+            <img src="dec.png" alt="Ajouter au panier" class="panier">
+          </a>
+        </div>
+        <div id="pigeonvente3" class="nobbo pres">
+          <img src="pigeonvente3.png" alt="pigeon3">
+          <a href="pigeon3.html">
+            <img src="dec.png" alt="Ajouter au panier" class="panier">
+          </a>
+        </div>
+        <div id="pigeonvente4" class="nobbo pres">
+          <img src="pigeonvente4.png" alt="pigeon4">
+          <a href="pigeon4.html">
+            <img src="dec.png" alt="Ajouter au panier" class="panier">
+          </a>
+        </div>
+      </div>
+      
+
+      <div id="baspage"></div>                         <!--repère pour scroller en bas de page automatiquement si le bouton 'découvrir' est cliqué-->
+      <div id="fondnoir">
+        <div id="noms">Edgar, Antoine, Jianing</div>
+        <div id="classe">2E StJdL</div>
+        <div id="info">Certaines images ont été générées avec des IA.</div>
+      </div>
+        
+      </div>
+    </div>
+    
+    <script>                                              <!--Javascript-->
+    	//const button = document.getElementById("logo");     défini button = id(logo)
+      //button.onmouseover = function(){                    si touche la souris...
+      //  button.classList.add("logogros");                 alors ajouter la classe logogros
+      //};
+      //button.onmouseout = function() {                    (tout ce paté est un ancien code que j'ai gardé au cas où...)
+      //  button.classList.remove("logogros");
+      //};
+	  const buttonbas = document.getElementById("dec");
+      const ciblebas = document.getElementById("baspage");
+      buttonbas.onclick = function() {
+        ciblebas.scrollIntoView({
+          behavior: "smooth"
+        });
+      }
+      
+           
+    </script>
+    <style>
+      body {
+        margin: 0;                   /*Enlève les bords blancs autour de la page*/
+        padding: 0;
+        background: linear-gradient(to bottom, #bdbdbd 0%, #f5f5f5 100%);   /*dégradé de gris*/
+      }
+      
+      .pagescroll {
+        position: relative;          /*c'est pour que le bouton se cale dessus (j'ai pas trop compris mias bon*/
+        top: 0px;
+        left: 0px;
+      }
+
+      .menubtn {
+        padding: 15px 25px;
+        background-color: white; /* couleur du bouton */
+        color: black;              /* couleur du texte */
+        border: none;              /* on enlève le bord par défaut */
+        font-size: 30px;           /* taille du texte */
+        cursor: pointer;
+        text-decoration: none;     /*enlève le surlignage*/
+      }
+      
+      .menubtn:hover {
+        outline: 2px solid #000; /* épaisseur 2px, ligne pleine, couleur noire */
+        z-index: 10;
+      }
+
+      
+      .grille {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));        /*autant de colonnes que possible avec min 200px par colonne*/
+        gap: 20px;
+        max-width: 1600px;
+        width: 90%;
+        margin: 5rem auto 2rem;
+        
+
+      }
+      .menu {
+        display: flex;
+        width: 100%;             /*Largeur du rectangle qui couvre toute la page*/
+        height: 9rem;           /*Hauteur du rectangle*/
+        background-color: white; /*Couleur de remplissage*/
+        padding-left: 1rem;
+        padding-top: 1rem;
+        box-sizing: border-box;
+        align-items: center;
+        gap: 0px;
+      }
+      
+      #logo {
+        cursor: pointer;
+        transition: transform 0.2s ease;
+        margin-right: 10rem;
+      }
+      #logo:hover {
+        transform: scale(1.2);
+      }
+
+      #logo img {            /*img car on change l'image du logo, et pas le logo lui-même. Sinon l'image du logo dépasserait du logo*/
+        height: 110px;
+      }
+      
+      #adec {
+        position: relative;
+        width: 90rem;
+        max-width: 1200px;
+        margin: 4rem auto 0rem;
+      }
+      #adec img {
+        width: 100%;   /* ne dépasse jamais la largeur de #adec */
+        height: auto;      /* garde les proportions */
+      }
+
+      #dec {
+        position: absolute;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
+      
+      #baspage {
+        position: absolute;
+        top: 50rem;
+      }
+      
+      .nobbo {
+        background: none;   /*Enlève la couleur grise de fond du bouton*/
+        border: none;       /*Enlève le bord rectangulaire*/
+        outline: none;      /*Enlève le contour bleu qui apparaît parfois quand on clique*/
+      }
+      
+      .cliquable {
+        z-index: 10;
+        cursor: pointer;
+        position: absolute;
+      }
+      .cliquable img {
+        transition: transform 0.2s ease;
+      }
+      .cliquable img:hover {         /*hover: s'exécute quand la souris passe dessus et se réanule ensuite*/
+        transform: scale(1.2);       /*met la taille à 120%*/
+      }
+
+      .pres {
+        position: relative
+      }
+
+      .panier {
+        position: absolute;
+        top: 31rem;
+        left: 6.3rem;
+        z-index: 10;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+      
+      .panier:hover {
+        transform : scale(1.2);
+      }
+
+      #fondnoir {
+        position: relative;
+        width: 100%;
+        height: 8rem;
+        background-color: black;
+        padding: 2rem 7rem;
+        box-sizing: border-box;        /*pour ne pas compter le padding dans la taille et éviter le débordement*/
+     }
+     #fondnoir div {
+      color: white;
+      font-family: Arial, sans-serif;
+      margin-bottom: 10px;
+     }
+
+      
+
+      
+    </style>
+    
+  </body>
+</html>
